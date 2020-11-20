@@ -26,9 +26,9 @@ VALUES
 
 INSERT INTO UsersToEnterprises 
 VALUES
-(1, 5),
-(2, 6),
-(3, 7)
+(1, 1),
+(2, 2),
+(3, 3)
 
 INSERT INTO Employees 
 VALUES
@@ -36,8 +36,32 @@ VALUES
 ('Kostya', 'Panin', 0),
 ('Stepan', 'Liceev', 0)
 
-INSERT INTO Employees 
+INSERT INTO EmployeeInfos 
 VALUES
-('Vova', 'Lujou', 0),
-('Kostya', 'Panin', 0),
-('Stepan', 'Liceev', 0)
+('Age', '54', 1),
+('Age','32', 2),
+('Age', '22', 3)
+
+INSERT INTO Premiums 
+VALUES
+(123, '2016-06-10'),
+(333, '2018-11-10'),
+(322, '2019-10-10')
+
+INSERT INTO EmployeesToPremiums 
+VALUES
+(1, 1),
+(2, 2),
+(3, 3)
+
+INSERT INTO Penalties 
+VALUES
+(123, '2016-06-10', 'deadlines expired'),
+(233, '2018-11-10', 'deadlines expired'),
+(322, '2019-10-10', 'deadlines expired')
+
+INSERT INTO EmployeesToPenalties 
+VALUES
+(1, 1),
+(2, 2),
+(3, 3)
