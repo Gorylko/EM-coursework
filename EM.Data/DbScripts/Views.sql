@@ -46,7 +46,7 @@ FROM dbo.Roles
 
 GO
 
-CREATE VIEW vwEmployeesPenalties
+CREATE VIEW vwEmployeesPenaltiesNonArchived
 AS
 
 SELECT dbo.EmployeesToPenalties.EmployeeId, dbo.EmployeesToPenalties.PenaltyId, dbo.Employees.[Name], dbo.Employees.Surname, dbo.Penalties.Amount, dbo.Penalties.[Date], dbo.Penalties.Reason

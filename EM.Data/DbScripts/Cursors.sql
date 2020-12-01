@@ -1,0 +1,62 @@
+USE EmDb
+
+DECLARE UserCredCursor CURSOR
+GLOBAL
+SCROLL
+KEYSET
+TYPE_WARNING
+FOR
+
+SELECT PasswordSalt, [Password], Id
+FROM dbo.Users
+
+GO
+
+DECLARE RolesCursor CURSOR
+GLOBAL
+SCROLL
+KEYSET
+TYPE_WARNING
+FOR
+
+SELECT *
+FROM vwUsersRoles
+
+GO
+
+DECLARE EmployeesPenaltiesNonArchivedCursor CURSOR
+GLOBAL
+SCROLL
+KEYSET
+TYPE_WARNING
+FOR
+
+SELECT *
+FROM vwEmployeesPenaltiesNonArchived
+
+GO
+
+DECLARE LoginCursor CURSOR
+GLOBAL
+SCROLL
+KEYSET
+TYPE_WARNING
+FOR
+
+SELECT Id, [Login]
+FROM dbo.Users
+
+GO
+
+DECLARE EmployeesPremiumsNonArchivedCursor CURSOR
+GLOBAL
+SCROLL
+KEYSET
+TYPE_WARNING
+FOR
+
+SELECT *
+FROM vwEmployeesPremiumsNonArchived
+
+GO
+
