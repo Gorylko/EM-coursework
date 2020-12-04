@@ -31,5 +31,11 @@ namespace EM.Data.Context
         public DbSet<UsersToEnterprises> UsersToEnterprises { get; set; }
 
         public DbSet<UsersToRoles> UsersToRoles { get; set; }
+        
+        public DbSet<UsersHistory> UsersHistories { get; set; }
+        
+        public DbSet<PenaltiesHistory> PenaltiesHistories { get; set; }
+        
+        public DbSet<PremiumsHistory> PremiumsHistories { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace EM.Data.Entities
 
         public double Amount { get; set; }
         
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         
         public string Reason { get; set; }
     }
