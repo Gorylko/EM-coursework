@@ -1,0 +1,94 @@
+USE EmDb;
+
+GO
+
+CREATE TRIGGER Penalties_DELETE
+ON dbo.Penalties
+AFTER DELETE
+AS
+INSERT INTO PenaltiesHistories(Amount, [Date])
+SELECT Amount, GETDATE()
+FROM DELETED
+
+GO
+
+CREATE TRIGGER Premiums_DELETE
+ON dbo.Premiums
+AFTER DELETE
+AS
+INSERT INTO PremiumsHistories(Amount, [Date])
+SELECT Amount, GETDATE()
+FROM DELETED
+
+GO
+
+CREATE TRIGGER Users_DELETE
+ON dbo.Users
+AFTER DELETE
+AS
+INSERT INTO UsersHistories([Login], [Date])
+SELECT [Login], GETDATE()
+FROM DELETED
+
+GO
+
+CREATE TRIGGER Penalties_INSERT
+ON dbo.Penalties
+AFTER DELETE
+AS
+INSERT INTO UsersHistories([Login], [Date])
+SELECT Amount, GETDATE()
+FROM INSERTED
+
+GO
+
+CREATE TRIGGER Premiums_INSERT
+ON dbo.Premiums
+AFTER DELETE
+AS
+INSERT INTO PremiumsHistories(Amount, [Date])
+SELECT Amount, GETDATE()
+FROM INSERTED
+
+GO
+
+CREATE TRIGGER Users_INSERT
+ON dbo.Users
+AFTER DELETE
+AS
+INSERT INTO UsersHistories([Login], [Date])
+SELECT [Login], GETDATE()
+FROM INSERTED
+
+GO
+
+
+CREATE TRIGGER Penalties_UPDATE
+ON dbo.Penalties
+AFTER DELETE
+AS
+INSERT INTO UsersHistories([Login], [Date])
+SELECT Amount, GETDATE()
+FROM INSERTED
+
+GO
+
+CREATE TRIGGER Premiums_UPDATE
+ON dbo.Premiums
+AFTER DELETE
+AS
+INSERT INTO PremiumsHistories(Amount, [Date])
+SELECT Amount, GETDATE()
+FROM INSERTED
+
+GO
+
+CREATE TRIGGER Users_UPDATE
+ON dbo.Users
+AFTER DELETE
+AS
+INSERT INTO UsersHistories([Login], [Date])
+SELECT [Login], GETDATE()
+FROM INSERTED
+
+GO
