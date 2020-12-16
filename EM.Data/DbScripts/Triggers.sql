@@ -34,7 +34,7 @@ GO
 
 CREATE TRIGGER Penalties_INSERT
 ON dbo.Penalties
-AFTER DELETE
+AFTER INSERT
 AS
 INSERT INTO UsersHistories([Login], [Date])
 SELECT Amount, GETDATE()
@@ -44,7 +44,7 @@ GO
 
 CREATE TRIGGER Premiums_INSERT
 ON dbo.Premiums
-AFTER DELETE
+AFTER INSERT
 AS
 INSERT INTO PremiumsHistories(Amount, [Date])
 SELECT Amount, GETDATE()
@@ -54,7 +54,7 @@ GO
 
 CREATE TRIGGER Users_INSERT
 ON dbo.Users
-AFTER DELETE
+AFTER INSERT
 AS
 INSERT INTO UsersHistories([Login], [Date])
 SELECT [Login], GETDATE()
@@ -65,7 +65,7 @@ GO
 
 CREATE TRIGGER Penalties_UPDATE
 ON dbo.Penalties
-AFTER DELETE
+AFTER UPDATE
 AS
 INSERT INTO UsersHistories([Login], [Date])
 SELECT Amount, GETDATE()
@@ -75,7 +75,7 @@ GO
 
 CREATE TRIGGER Premiums_UPDATE
 ON dbo.Premiums
-AFTER DELETE
+AFTER UPDATE
 AS
 INSERT INTO PremiumsHistories(Amount, [Date])
 SELECT Amount, GETDATE()
@@ -85,7 +85,7 @@ GO
 
 CREATE TRIGGER Users_UPDATE
 ON dbo.Users
-AFTER DELETE
+AFTER UPDATE
 AS
 INSERT INTO UsersHistories([Login], [Date])
 SELECT [Login], GETDATE()
