@@ -8,8 +8,6 @@ namespace EM.CMD
         static void Main(string[] args)
         {
             var connectionString = "";
-            
-            var context = new EmContext();
         }
     }
 }
