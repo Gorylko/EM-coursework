@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EM.Data.Context;
 using EM.Data.Repositories.Interfaces;
@@ -23,6 +21,8 @@ namespace EM.Data.Repositories.Implementations
         public async Task Save(TEntity entity)
         {
             await _dbSet.AddAsync(entity);
+            
+            await _context.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
@@ -35,6 +35,8 @@ namespace EM.Data.Repositories.Implementations
             }
 
             await Task.Run(() => _dbSet.Remove(entity));
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TEntity>> GetAll()
@@ -52,6 +54,8 @@ namespace EM.Data.Repositories.Implementations
             await Task.Run(() => _dbSet.Attach(entity));
             
             _context.Entry(entity).State = EntityState.Modified;
+            
+            await _context.SaveChangesAsync();
         }
     }
 }

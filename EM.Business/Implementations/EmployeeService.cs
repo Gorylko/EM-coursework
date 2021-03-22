@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EM.Business.Interfaces;
-using EM.Data.Context;
 using EM.Data.Entities;
-using EM.Data.Repositories.Implementations;
+using EM.Data.Repositories.Interfaces;
 
 namespace EM.Business.Implementations
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly EmployeeRepository _repository;
+        private readonly IGenericRepository<Employee> _repository;
         
-        public EmployeeService(EmployeeRepository repository)
+        public EmployeeService(IGenericRepository<Employee> repository)
         {
             _repository = repository;
         }

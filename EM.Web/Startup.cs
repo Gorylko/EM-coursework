@@ -1,4 +1,5 @@
 using EM.Data.Context;
+using EM.Web.Dependency;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +27,8 @@ namespace EM.Web
 
             services.AddDbContext<EmContext>(options =>
                 options.UseSqlServer(connection));
-            
+            services.AddAppDependencies();
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
