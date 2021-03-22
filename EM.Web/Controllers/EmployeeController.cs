@@ -1,20 +1,17 @@
 ﻿using System.Threading.Tasks;
-using EM.Business.Implementations;
 using EM.Business.Interfaces;
-using EM.Data.Context;
 using EM.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EM.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class EmployeeController : Controller
+    public class EmployeesController : Controller
     {
         private readonly IEmployeeService _service;
         
-        public EmployeeController(IEmployeeService service)
+        public EmployeesController(IEmployeeService service)
         {
             _service = service;
         }
@@ -36,6 +33,22 @@ namespace EM.Web.Controllers
         {
             await _service.Save(employee);
             
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.Delete(id);
+
+            return Ok();
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update(Employee employee)
+        {
+            await _service.Update(employee);
+
             return Ok();
         }
     }
