@@ -1,1 +1,4 @@
-<p>{{employees?.length}}</p>
+<em-employees-list-item
+    *ngFor='let employee of employees'
+    [employee]='employee'
+></em-employees-list-item>
