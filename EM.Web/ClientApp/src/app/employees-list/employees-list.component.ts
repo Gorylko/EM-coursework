@@ -26,7 +26,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 		this.dataSource = new EmployeeSource(this.employeesDataService);
 		this.dataSource.loadEmployees({
 			searchValue: '',
-			pageIngex: 0,
+			pageIndex: 0,
 			pageSize: 3
 		} as EmployeesListRequest);
 	}
@@ -42,7 +42,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
     loadEmployeesPage() {
         this.dataSource.loadEmployees({
 			searchValue: 'asc',
-			pageIngex: this.paginator.pageIndex,
+			pageIndex: this.paginator.pageIndex,
 			pageSize: this.paginator.pageSize 
 		} as EmployeesListRequest);
     }

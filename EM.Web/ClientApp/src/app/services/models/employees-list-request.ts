@@ -1,5 +1,5 @@
 export interface EmployeesListRequest {
     searchValue: string;
-    pageIngex: number;
+    pageIndex: number;
     pageSize: number;
 }
