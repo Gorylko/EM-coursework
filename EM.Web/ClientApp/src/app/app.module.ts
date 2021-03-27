@@ -9,6 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { EmployeesListItemComponent } from './employees-list-item/employees-list-item.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
@@ -17,15 +19,14 @@ import { EmployeesListItemComponent } from './employees-list-item/employees-list
         HomeComponent,
         EmployeesListComponent,
         EmployeesListItemComponent,
+        EmployeeDetailsComponent,
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         FormsModule,
-        RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'employees', component: EmployeesListComponent },
-        ]),
+        AppRoutingModule,
+        RouterModule,
     ],
 
     providers: [],
