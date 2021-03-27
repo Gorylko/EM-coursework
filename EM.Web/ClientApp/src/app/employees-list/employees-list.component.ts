@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { tap } from 'rxjs/operators';
 import { EmployeeSource } from '../data/employee-source';
 import { EmployeesDataService } from '../services/employees-data.service';
-import { EmployeesListRequest } from '../services/models/employees-list-request';
+import { SearchListRequest } from '../services/models/search-list-request';
 
 @Component({
 	selector: 'em-employees-list',
@@ -23,12 +23,12 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 
 	ngOnInit() {
-		this.dataSource = new EmployeeSource(this.employeesDataService);
+		this.dataSource = new EmployeeSource(this.employeesDataService, this.cdr);
 		this.dataSource.loadEmployees({
 			searchValue: '',
 			pageIndex: 0,
-			pageSize: 3
-		} as EmployeesListRequest);
+			pageSize: 5
+		} as SearchListRequest);
 	}
 	
     ngAfterViewInit() {
@@ -44,7 +44,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 			searchValue: 'asc',
 			pageIndex: this.paginator.pageIndex,
 			pageSize: this.paginator.pageSize 
-		} as EmployeesListRequest);
+		} as SearchListRequest);
     }
 
 }

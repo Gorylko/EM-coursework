@@ -2,9 +2,9 @@
 using EM.Data.Entities;
 using EM.Shared.Models;
 
-namespace EM.Business.Interfaces
+namespace EM.Data.Repositories.Interfaces
 {
-    public interface IEmployeeService : IService<Employee>
+    public interface IEmployeesRepository : IGenericRepository<Employee>
     {
         Task<SearchResultModel<Employee>> GetSearchedEmployees(SearchModel model);
     }

@@ -26,6 +26,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\EM.Business\EM.Business.csproj" />
+      <ProjectReference Include="..\EM.Shared\EM.Shared.csproj" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

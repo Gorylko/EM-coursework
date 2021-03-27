@@ -9,49 +9,50 @@ namespace EM.Data.Repositories.Implementations
     public class GenericRepository<TEntity> : IGenericRepository<TEntity>
         where TEntity : class
     {
-        private readonly DbSet<TEntity> _dbSet;
         private readonly EmContext _context;
+        
+        protected readonly DbSet<TEntity> DbSet;
 
         public GenericRepository(EmContext context)
         {
             _context = context;
-            _dbSet = _context.Set<TEntity>();
+            DbSet = _context.Set<TEntity>();
         }
 
         public async Task Save(TEntity entity)
         {
-            await _dbSet.AddAsync(entity);
+            await DbSet.AddAsync(entity);
             
             await _context.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
         {
-            TEntity entity = _dbSet.Find(id);
+            TEntity entity = DbSet.Find(id);
 
             if (_context.Entry(entity).State == EntityState.Detached)
             {
-                _dbSet.Attach(entity);
+                DbSet.Attach(entity);
             }
 
-            await Task.Run(() => _dbSet.Remove(entity));
+            await Task.Run(() => DbSet.Remove(entity));
 
             await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
-            return await _dbSet.ToListAsync();
+            return await DbSet.ToListAsync();
         }
 
         public async Task<TEntity> GetById(int id)
         {
-            return await _dbSet.FindAsync(id);
+            return await DbSet.FindAsync(id);
         }
 
         public async Task Update(TEntity entity)
         {
-            await Task.Run(() => _dbSet.Attach(entity));
+            await Task.Run(() => DbSet.Attach(entity));
             
             _context.Entry(entity).State = EntityState.Modified;
             

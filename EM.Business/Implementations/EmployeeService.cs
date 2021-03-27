@@ -3,14 +3,15 @@ using System.Threading.Tasks;
 using EM.Business.Interfaces;
 using EM.Data.Entities;
 using EM.Data.Repositories.Interfaces;
+using EM.Shared.Models;
 
 namespace EM.Business.Implementations
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly IGenericRepository<Employee> _repository;
+        private readonly IEmployeesRepository _repository;
         
-        public EmployeeService(IGenericRepository<Employee> repository)
+        public EmployeeService(IEmployeesRepository repository)
         {
             _repository = repository;
         }
@@ -38,6 +39,11 @@ namespace EM.Business.Implementations
         public async Task Save(Employee entity)
         {
             await _repository.Save(entity);
+        }
+
+        public async Task<SearchResultModel<Employee>> GetSearchedEmployees(SearchModel model)
+        {
+            return await _repository.GetSearchedEmployees(model);
         }
     }
 }

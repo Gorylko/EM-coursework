@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using EM.Business.Interfaces;
 using EM.Data.Entities;
+using EM.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EM.Web.Controllers
@@ -28,6 +29,13 @@ namespace EM.Web.Controllers
             return Ok(await _service.GetById(id));
         }
 
+        [HttpPost]
+        [Route("searchedList")]
+        public async Task<IActionResult> GetSearchedList(SearchModel model)
+        {
+            return Ok(await _service.GetSearchedEmployees(model));
+        }
+        
         [HttpPost]
         public async Task<IActionResult> Save(Employee employee)
         {

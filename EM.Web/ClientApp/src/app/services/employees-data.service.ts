@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../common/models/employee.interface';
-import { EmployeesListRequest } from './models/employees-list-request';
+import { SearchListRequest } from './models/search-list-request';
+import { SearchListResponse } from './models/search-list-response.interface';
 import { RequestBuilder } from './request-builder';
 
 const apiController = 'Employees';
@@ -13,8 +14,8 @@ export class EmployeesDataService {
 
     constructor(private readonly builder: RequestBuilder) { }
 
-    public getEmployersList(request: EmployeesListRequest): Observable<Employee[]> {
-        return this.builder.useApiUrl(apiController).post<Employee[]>(request);
+    public getEmployersList(request: SearchListRequest): Observable<SearchListResponse<Employee>> {
+        return this.builder.useApiUrl(`${apiController}/searchedList`).post<SearchListResponse<Employee>>(request);
     }
 
     public getEmloyeeById(id: number): Observable<Employee> {

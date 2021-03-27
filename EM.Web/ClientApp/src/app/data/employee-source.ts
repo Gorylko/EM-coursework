@@ -4,16 +4,23 @@ import { Employee } from "../common/models/employee.interface";
 import { EmployeesDataService } from "../services/employees-data.service";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { catchError, finalize } from "rxjs/operators";
-import { EmployeesListRequest } from "../services/models/employees-list-request";
+import { ChangeDetectorRef, Injectable } from "@angular/core";
+import { SearchListRequest } from "../services/models/search-list-request";
 
+@Injectable()
 export class EmployeeSource implements DataSource<Employee> {
 
     private employeesSubject = new BehaviorSubject<Employee[]>([]);
+    private employeesCountSubject = new BehaviorSubject<number>(0);
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
     public loading$ = this.loadingSubject.asObservable();
+    public count$ = this.employeesSubject.asObservable();
 
-    constructor(private employeeService: EmployeesDataService) {}
+    constructor(
+        private employeeService: EmployeesDataService,
+        private cdr: ChangeDetectorRef,
+        ) {}
 
     connect(collectionViewer: CollectionViewer): Observable<Employee[]> {
         return this.employeesSubject.asObservable();
@@ -24,14 +31,21 @@ export class EmployeeSource implements DataSource<Employee> {
         this.loadingSubject.complete();
     }
 
-    loadEmployees(request: EmployeesListRequest) {
+    loadEmployees(request: SearchListRequest) {
         this.loadingSubject.next(true);
 
         this.employeeService.getEmployersList(request)
             .pipe(
-                catchError(() => of([])),
+                catchError(() => of(undefined)),
                 finalize(() => this.loadingSubject.next(false))
             )
-            .subscribe(employees => this.employeesSubject.next(employees));
+            .subscribe(data => {
+                if(data){
+                    this.employeesCountSubject.next(data.count);
+                    this.employeesSubject.next(data.collection);
+                }
+
+                this.cdr.markForCheck();
+            });
     }    
 }
