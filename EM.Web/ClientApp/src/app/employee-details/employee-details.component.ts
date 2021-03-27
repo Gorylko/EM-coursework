@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../common/models/employee.interface';
 import { EmployeesDataService } from '../services/employees-data.service';
@@ -10,6 +11,7 @@ import { EmployeesDataService } from '../services/employees-data.service';
 })
 export class EmployeeDetailsComponent implements OnInit {
     public employee: Employee;
+    public form: FormGroup;
 
     constructor(
         private route: ActivatedRoute,
@@ -18,6 +20,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.initEmployee();
+        this.initFormGroup();
     }
 
     initEmployee(): void {
@@ -27,4 +30,10 @@ export class EmployeeDetailsComponent implements OnInit {
             .subscribe(data => this.employee = data);
     }
 
+    initFormGroup(): void {
+        this.form = new FormGroup({
+            name: new FormControl(''),
+            surname: new FormControl(''),
+        });
+    }
 }

@@ -1,9 +1,9 @@
 <header class="nav-menu">
     <nav
-        class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+        class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3"
     >
         <div class="container">
-        <a class="navbar-brand" [routerLink]="['/']">EM.Web</a>
+        <a class="navbar-brand" [routerLink]="['/']">EM Solutions</a>
         <button
             class="navbar-toggler"
             type="button"
@@ -16,22 +16,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div
-            class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+            class="collapse navbar-collapse"
             [ngClass]="{ show: isExpanded }"
         >
             <ul class="navbar-nav flex-grow">
-            <li
-                class="nav-item"
-                [routerLinkActive]="['link-active']"
-                [routerLinkActiveOptions]="{ exact: true }"
-            >
-                <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-                <a class="nav-link text-dark" [routerLink]="['/employees']"
-                >Employees</a
+                <li
+                    class="nav-item"
+                    [routerLinkActive]="['link-active']"
+                    [routerLinkActiveOptions]="{ exact: true }"
                 >
-            </li>
+                    <a class="nav-link" [routerLink]="['/']">Home</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['link-active']">
+                    <a class="nav-link" [routerLink]="['/employees']"
+                    >Employees</a
+                    >
+                </li>
             </ul>
         </div>
         </div>
