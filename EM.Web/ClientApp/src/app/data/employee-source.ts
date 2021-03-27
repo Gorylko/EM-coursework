@@ -15,7 +15,11 @@ export class EmployeeSource implements DataSource<Employee> {
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
     public loading$ = this.loadingSubject.asObservable();
-    public count$ = this.employeesSubject.asObservable();
+    public count$ = this.employeesCountSubject.asObservable();
+
+    public get count() {
+        return this.employeesCountSubject.value;
+    }
 
     constructor(
         private employeeService: EmployeesDataService,

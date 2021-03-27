@@ -14,6 +14,7 @@ import { SearchListRequest } from '../services/models/search-list-request';
 export class EmployeesListComponent implements OnInit, AfterViewInit {
 	public dataSource: EmployeeSource;
 	public displayedColumns: string[] = ['name', 'surname'];
+	public count: number = 0;
 
 	constructor(
 		private readonly employeesDataService: EmployeesDataService,
@@ -24,6 +25,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 
 	ngOnInit() {
 		this.dataSource = new EmployeeSource(this.employeesDataService, this.cdr);
+
 		this.dataSource.loadEmployees({
 			searchValue: '',
 			pageIndex: 0,
@@ -46,5 +48,4 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 			pageSize: this.paginator.pageSize 
 		} as SearchListRequest);
     }
-
 }
