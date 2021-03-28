@@ -1,0 +1,6 @@
+<header class="em-page-toolbar">
+    <button mat-icon-button class="icon-button">
+        <mat-icon class="white icon" (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <span class="white text">{{pageSidebarStateService.title$ | async}}</span>
+</header>

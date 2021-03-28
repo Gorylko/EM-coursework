@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, ViewEnc
 import { MatPaginator } from '@angular/material/paginator';
 import { tap } from 'rxjs/operators';
 import { EmployeeSource } from '../data/employee-source';
+import { PageSidebarStateService } from '../data/page-sidebar-state.service';
 import { EmployeesDataService } from '../services/employees-data.service';
 import { SearchListRequest } from '../services/models/search-list-request';
 
@@ -12,12 +13,15 @@ import { SearchListRequest } from '../services/models/search-list-request';
 	encapsulation: ViewEncapsulation.None,
 })
 export class EmployeesListComponent implements OnInit, AfterViewInit {
+	public pageTitle: string = 'Employeer';
+
 	public dataSource: EmployeeSource;
 	public displayedColumns: string[] = ['name', 'surname'];
 	public count: number = 0;
 
 	constructor(
 		private readonly employeesDataService: EmployeesDataService,
+		private pageSidebarStateService: PageSidebarStateService,
 		private cdr: ChangeDetectorRef,
 	) { }
 
@@ -31,6 +35,8 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 			pageIndex: 0,
 			pageSize: 5
 		} as SearchListRequest);
+
+		this.pageSidebarStateService.title = this.pageTitle;
 	}
 	
     ngAfterViewInit() {

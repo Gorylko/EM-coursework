@@ -7,7 +7,6 @@ import { catchError, finalize } from "rxjs/operators";
 import { ChangeDetectorRef, Injectable } from "@angular/core";
 import { SearchListRequest } from "../services/models/search-list-request";
 
-@Injectable()
 export class EmployeeSource implements DataSource<Employee> {
 
     private employeesSubject = new BehaviorSubject<Employee[]>([]);
