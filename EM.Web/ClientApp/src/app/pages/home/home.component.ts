@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PageSidebarStateService } from '../data/page-sidebar-state.service';
+import { PageSidebarStateService } from '../../data/page-sidebar-state.service';
 
 @Component({
 	selector: 'em-home',

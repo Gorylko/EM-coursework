@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { EmployeesListComponent } from './employees-list/employees-list.component';
-import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { HomeComponent } from './pages/home/home.component';
+import { EmployeesListComponent } from './pages/employees-list/employees-list.component';
+import { EmployeeDetailsComponent } from './pages/employee-details/employee-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './common/modules/material.module';

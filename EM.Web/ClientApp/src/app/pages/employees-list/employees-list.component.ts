@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { tap } from 'rxjs/operators';
-import { EmployeeSource } from '../data/employee-source';
-import { PageSidebarStateService } from '../data/page-sidebar-state.service';
-import { EmployeesDataService } from '../services/employees-data.service';
-import { SearchListRequest } from '../services/models/search-list-request';
+import { EmployeeSource } from '../../data/employee-source';
+import { PageSidebarStateService } from '../../data/page-sidebar-state.service';
+import { EmployeesDataService } from '../../services/employees-data.service';
+import { SearchListRequest } from '../../services/models/search-list-request';
 
 @Component({
 	selector: 'em-employees-list',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Employee } from '../common/models/employee.interface';
-import { EmployeesDataService } from '../services/employees-data.service';
+import { Employee } from '../../common/models/employee.interface';
+import { EmployeesDataService } from '../../services/employees-data.service';
 
 @Component({
     selector: 'app-employee-details',
