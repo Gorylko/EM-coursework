@@ -16,7 +16,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 	public pageTitle: string = 'Employeer';
 
 	public dataSource: EmployeeSource;
-	public displayedColumns: string[] = ['name', 'surname'];
+	public displayedColumns: string[] = ['name', 'surname', 'edit'];
 	public count: number = 0;
 
 	constructor(
