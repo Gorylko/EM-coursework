@@ -1,16 +1,18 @@
 <mat-tree class="em-tree" [dataSource]="dataSource" [treeControl]="treeControl">
-    <!-- This is the tree node template for leaf nodes -->
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-        <!-- use a disabled button to provide padding for tree leaf -->
-        <button mat-icon-button disabled></button>
-        {{node.name}}
+        <mat-icon color='primary' class="mat-icon-rtl-mirror">
+            description
+        </mat-icon>
+        <a href="https://localhost:5000/api/v1/Files?fileName={{node.name}}" class="em-tree__link" target="_blank" rel="noopener">
+            {{node.name}}
+        </a>
     </mat-tree-node>
-    <!-- This is the tree node template for expandable nodes -->
+
     <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
         <button mat-icon-button matTreeNodeToggle
                 [attr.aria-label]="'Toggle ' + node.name">
-            <mat-icon class="mat-icon-rtl-mirror">
-                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            <mat-icon color='primary' class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'folder_open' : 'folder'}}
             </mat-icon>
         </button>
         {{node.name}}
