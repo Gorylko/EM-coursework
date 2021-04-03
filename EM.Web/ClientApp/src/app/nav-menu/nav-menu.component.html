@@ -1,39 +1,41 @@
-<header class="nav-menu">
-    <nav
-        class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-    >
-        <div class="container">
-        <a class="navbar-brand" [routerLink]="['/']">EM.Web</a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target=".navbar-collapse"
-            aria-label="Toggle navigation"
-            [attr.aria-expanded]="isExpanded"
-            (click)="toggle()"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-            class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-            [ngClass]="{ show: isExpanded }"
-        >
-            <ul class="navbar-nav flex-grow">
-            <li
-                class="nav-item"
-                [routerLinkActive]="['link-active']"
-                [routerLinkActiveOptions]="{ exact: true }"
-            >
-                <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-                <a class="nav-link text-dark" [routerLink]="['/employees']"
-                >Employees</a
-                >
-            </li>
-            </ul>
-        </div>
-        </div>
-    </nav>
-</header>
+<div class="em-nav-menu">
+    <mat-toolbar class="em-nav-menu__toolbar" color="primary">
+        <mat-toolbar-row class="em-nav-menu__toolbar-row">
+          <h1>EM Solutions</h1>
+          <span class="menu-spacer"></span>
+          <div>
+            <a mat-button [routerLink]="'/'"> Home </a>
+            <a mat-button [routerLink]="'/employees'"> Employees </a>
+            <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+          </div>
+        </mat-toolbar-row>
+      
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #sidenav>
+            <mat-nav-list class="sidenav-list">
+        
+                <a mat-list-item [routerLink]="'/'"> Home </a>
+                <a mat-list-item [routerLink]="'/employees'"> Employees </a>
+                <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+                <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content class="sidenav-content">
+            <em-page-toolbar [sidenav]="sidenav"></em-page-toolbar>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <em-files-tree></em-files-tree>
+                    </div>
+                    <div class="col">
+                        <router-outlet></router-outlet>
+                    </div> 
+                </div>       
+            </div>
+        </mat-sidenav-content>
+        
+    </mat-sidenav-container>
+</div>

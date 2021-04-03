@@ -8,6 +8,8 @@ namespace EM.Data.Entities
         
         public string Surname { get; set; }
         
+        public decimal Salary { get; set; }
+        
         public bool IsArchived { get; set; }
     }
 }

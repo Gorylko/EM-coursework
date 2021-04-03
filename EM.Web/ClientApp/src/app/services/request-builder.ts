@@ -41,7 +41,6 @@ export class RequestBuilder {
     public constructor(private client: HttpClient) {}
 
     public useApiUrl(endPointUrl: string): RequestClientBuilder {
-        console.log(`${environment.api}/${endPointUrl}`);
         return new RequestClientBuilder(this.client, `${environment.api}/${endPointUrl}`);
     }
 }

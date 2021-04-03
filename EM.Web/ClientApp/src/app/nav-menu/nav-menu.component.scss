@@ -1,19 +1,40 @@
-.nav-menu {
-    font-size: 14px;
+.em-nav-menu {
+    &__toolbar {
 
-    @media (min-width: 768px) {
-        html {
-            font-size: 16px;
+        &-row {
+            top: 0;
+            right: 0;
+            left: 0;
+            position: fixed;
+            z-index:10;
+            background-color: #e91e63;
+            box-shadow:0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+
+            a {
+                &:hover{
+                    color: #ffa4c3;
+                    text-decoration: none;
+                }
+            }
         }
+
     }
 
-    a {
-        white-space: normal;
-        text-align: center;
-        word-break: break-all;
-    }
+    .sidenav-container {
+        height: 100%;
+        overflow: visible;
 
-    .box-shadow {
-        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+        .sidenav-list {
+        }
+
+        .sidenav-content {
+            overflow: visible;
+            padding-bottom: 150px;
+
+            .container {
+                margin-top: 20px;
+                margin-left: 20px;
+            }
+        }
     }
 }
