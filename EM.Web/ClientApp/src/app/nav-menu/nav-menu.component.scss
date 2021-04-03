@@ -1,6 +1,4 @@
 .em-nav-menu {
-    height: 100%;
-
     &__toolbar {
 
         &-row {
@@ -31,6 +29,7 @@
 
         .sidenav-content {
             overflow: visible;
+            padding-bottom: 150px;
 
             .container {
                 margin-top: 20px;

@@ -1,0 +1,38 @@
+.em-footer {
+    background: #e91e63;
+    color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    z-index: 10;
+    text-align: center;
+    
+    .text {
+        color: #fff;
+        font-size: 30px;
+        margin: auto;
+    }
+
+    &__list {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        padding: 8px;
+
+        .em-footer-logo {
+            flex: 1;
+
+            .footer-logo {
+                .em-footer-angular-logo {
+                    height: 100px;
+                }
+            }
+        }
+    }
+
+    footer {
+        display: block;
+    }
+}

@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './common/modules/material.module';
 import { PageToolbarComponent } from './nav-menu/page-toolbar/page-toolbar.component';
 import { PageSidebarStateService } from './data/page-sidebar-state.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { PageSidebarStateService } from './data/page-sidebar-state.service';
         EmployeesListComponent,
         EmployeeDetailsComponent,
         PageToolbarComponent,
+        FooterComponent,
     ],
     imports: [
         MaterialModule,
