@@ -21,4 +21,8 @@ export class EmployeesDataService {
     public getEmloyeeById(id: number): Observable<Employee> {
         return this.builder.useApiUrl(`${apiController}/${id}`).get<Employee>();
     }
+
+    public updateEmployee(employee: Employee) {
+        return this.builder.useApiUrl(apiController).put(employee);
+    }
 }
