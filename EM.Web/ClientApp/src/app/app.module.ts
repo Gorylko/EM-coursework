@@ -16,6 +16,8 @@ import { PageToolbarComponent } from './nav-menu/page-toolbar/page-toolbar.compo
 import { PageSidebarStateService } from './data/page-sidebar-state.service';
 import { FooterComponent } from './footer/footer.component';
 import { FilesTreeComponent } from './files-tree/files-tree.component';
+import { FilesDataService } from './services/files-data.service';
+import { EmployeesDataService } from './services/employees-data.service';
 
 @NgModule({
     declarations: [
@@ -39,7 +41,11 @@ import { FilesTreeComponent } from './files-tree/files-tree.component';
         RouterModule,
     ],
 
-    providers: [PageSidebarStateService],
+    providers: [
+        PageSidebarStateService,
+        FilesDataService,
+        EmployeesDataService,
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

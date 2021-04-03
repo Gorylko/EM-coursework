@@ -6,27 +6,26 @@ import { Folder } from './models/folder.interface';
 
 const TreeData: Folder[] = [
 	{
-		name: 'Fruit',
+		name: 'Files',
 		childrens: [
-			{ name: 'Apple' },
-			{ name: 'Banana' },
-			{ name: 'Fruit loops' },
+			{ name: 'Kiryl_CV.pdf' },
+			{ name: 'Dig.pdf' },
+			{ name: 'Always_Jive.pdf' },
 		]
 	},
 	{
-		name: 'Vegetables',
+		name: 'Sorted Files',
 		childrens: [
 		{
-			name: 'Green',
+			name: 'Work',
 			childrens: [
-			{ name: 'Broccoli' },
-			{ name: 'Brussels sprouts' },
+			{ name: 'Kiryl_CV.pdf' },
 		]},
 		{
-        name: 'Orange',
+        name: 'For Fun',
         childrens: [
-			{ name: 'Pumpkins' },
-			{ name: 'Carrots' },
+			{ name: 'Dig.pdf' },
+			{ name: 'Always_Jive.pdf' },
         ]
       },
     ]
@@ -41,11 +40,11 @@ const TreeData: Folder[] = [
 export class FilesTreeComponent {
 	private _transformer = (node: Folder, level: number) => {
 		return {
-		  expandable: !!node.childrens && node.childrens.length > 0,
-		  name: node.name,
-		  level: level,
+			expandable: !!node.childrens && node.childrens.length > 0,
+			name: node.name,
+			level: level,
 		};
-	  }
+	}
 	
 	treeControl = new FlatTreeControl<FlatNode>(
 		node => node.level, node => node.expandable);
@@ -60,4 +59,8 @@ export class FilesTreeComponent {
 	}
 	
 	hasChild = (_: number, node: FlatNode) => node.expandable;
+
+	fileClick(fileName: string) {
+		
+	}
 }
