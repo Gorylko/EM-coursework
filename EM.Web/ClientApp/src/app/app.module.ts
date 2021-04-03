@@ -15,6 +15,7 @@ import { MaterialModule } from './common/modules/material.module';
 import { PageToolbarComponent } from './nav-menu/page-toolbar/page-toolbar.component';
 import { PageSidebarStateService } from './data/page-sidebar-state.service';
 import { FooterComponent } from './footer/footer.component';
+import { FilesTreeComponent } from './files-tree/files-tree.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
         EmployeeDetailsComponent,
         PageToolbarComponent,
         FooterComponent,
+        FilesTreeComponent,
     ],
     imports: [
         MaterialModule,
