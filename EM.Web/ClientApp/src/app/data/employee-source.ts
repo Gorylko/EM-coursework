@@ -3,8 +3,8 @@ import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { Employee } from "../common/models/employee.interface";
 import { EmployeesDataService } from "../services/employees-data.service";
 import { BehaviorSubject, Observable, of } from "rxjs";
-import { catchError, finalize } from "rxjs/operators";
-import { ChangeDetectorRef, Injectable } from "@angular/core";
+import { catchError, finalize, map } from "rxjs/operators";
+import { ChangeDetectorRef } from "@angular/core";
 import { SearchListRequest } from "../services/models/search-list-request";
 
 export class EmployeeSource extends DataSource<Employee> {
@@ -15,6 +15,7 @@ export class EmployeeSource extends DataSource<Employee> {
 
     public loading$ = this.loadingSubject.asObservable();
     public count$ = this.employeesCountSubject.asObservable();
+    public isEmpty$ = this.count$.pipe(map(x => x < 1));
 
     public get count() {
         return this.employeesCountSubject.value;
@@ -52,5 +53,5 @@ export class EmployeeSource extends DataSource<Employee> {
 
                 this.cdr.markForCheck();
             });
-    }    
+    }
 }

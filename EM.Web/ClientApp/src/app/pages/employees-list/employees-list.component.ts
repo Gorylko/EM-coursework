@@ -26,15 +26,14 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 		private readonly employeesDataService: EmployeesDataService,
 		private pageSidebarStateService: PageSidebarStateService,
 		private cdr: ChangeDetectorRef,
-	) { }
+	) {
+	}
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	ngOnInit() {
-		this.searchForm = new FormGroup({
-			search: new FormControl(''),
-		});
+	ngOnInit(): void {
+		this.initControls();
 
 		this.dataSource = new EmployeeSource(this.employeesDataService, this.cdr);
 
@@ -47,7 +46,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
 		this.pageSidebarStateService.title = this.pageTitle;
 	}
 	
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.paginator.page
             .pipe(
                 tap(() => this.loadEmployeesPage())
@@ -55,11 +54,19 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
             .subscribe();
     }
 
-    loadEmployeesPage() {
+    loadEmployeesPage(): void {
         this.dataSource.loadEmployees({
-			searchValue: 'asc',
+			searchValue: this.searchForm?.controls?.search?.value,
 			pageIndex: this.paginator.pageIndex,
 			pageSize: this.paginator.pageSize 
 		} as SearchListRequest);
     }
+
+	initControls(): void {
+		this.searchForm = new FormGroup({
+			search: new FormControl(''),
+		});
+
+		this.searchForm.controls.search.valueChanges.subscribe((a) => this.loadEmployeesPage());
+	}
 }
