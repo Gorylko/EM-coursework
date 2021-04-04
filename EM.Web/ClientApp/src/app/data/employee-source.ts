@@ -7,7 +7,7 @@ import { catchError, finalize } from "rxjs/operators";
 import { ChangeDetectorRef, Injectable } from "@angular/core";
 import { SearchListRequest } from "../services/models/search-list-request";
 
-export class EmployeeSource implements DataSource<Employee> {
+export class EmployeeSource extends DataSource<Employee> {
 
     private employeesSubject = new BehaviorSubject<Employee[]>([]);
     private employeesCountSubject = new BehaviorSubject<number>(0);
@@ -23,7 +23,9 @@ export class EmployeeSource implements DataSource<Employee> {
     constructor(
         private employeeService: EmployeesDataService,
         private cdr: ChangeDetectorRef,
-        ) {}
+        ) {
+            super();
+        }
 
     connect(collectionViewer: CollectionViewer): Observable<Employee[]> {
         return this.employeesSubject.asObservable();
