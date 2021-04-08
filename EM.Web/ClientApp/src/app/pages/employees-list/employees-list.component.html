@@ -7,7 +7,7 @@
 
 <div class="mat-elevation-z8">
 
-    <table mat-table matSort [dataSource]="dataSource">
+    <table mat-table matSort [dataSource]="dataSource" (matSortChange)="onSortData($event)">
         <div #spinner class="spinner-container" *ngIf="(dataSource.loading$ | async)">
             <mat-spinner></mat-spinner>
         </div>

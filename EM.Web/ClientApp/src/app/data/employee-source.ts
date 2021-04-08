@@ -14,11 +14,16 @@ export class EmployeeSource extends DataSource<Employee> {
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
     public loading$ = this.loadingSubject.asObservable();
+    public employees$ = this.employeesSubject.asObservable();
     public count$ = this.employeesCountSubject.asObservable();
     public isEmpty$ = this.count$.pipe(map(x => x < 1));
 
     public get count() {
         return this.employeesCountSubject.value;
+    }
+
+    public set Employees(employees: Employee[]) {
+        this.employeesSubject.next(employees);
     }
 
     constructor(
