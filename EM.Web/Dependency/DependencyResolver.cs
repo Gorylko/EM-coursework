@@ -14,6 +14,10 @@ namespace EM.Web.Dependency
             services.AddTransient<IGenericRepository<Employee>, GenericRepository<Employee>>();
             services.AddTransient<IEmployeesRepository, EmployeeRepository>();
             services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IPenaltiesRepository, PenaltiesRepository>();
+            services.AddTransient<IPenaltiesService, PenaltiesService>();
+            services.AddTransient<IPremiumsRepository, PremiumsRepository>();
+            services.AddTransient<IPremiumsService, PremiumsService>();
         }
     }
 }
