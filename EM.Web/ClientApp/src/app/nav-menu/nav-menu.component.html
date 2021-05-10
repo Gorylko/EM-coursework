@@ -6,7 +6,7 @@
           <div>
             <a mat-button [routerLink]="'/'"> Home </a>
             <a mat-button [routerLink]="'/employees'"> Employees </a>
-            <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+            <a mat-button href="https://localhost:5000/swagger"> Admin </a>
           </div>
         </mat-toolbar-row>
       
@@ -17,7 +17,7 @@
         
                 <a mat-list-item [routerLink]="'/'"> Home </a>
                 <a mat-list-item [routerLink]="'/employees'"> Employees </a>
-                <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+                <a mat-list-item href="https://localhost:5000/swagger"> Admin </a>
                 <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
         
             </mat-nav-list>
