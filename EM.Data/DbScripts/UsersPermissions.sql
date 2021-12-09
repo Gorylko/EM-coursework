@@ -31,9 +31,9 @@ WITH GRANT OPTION
 /*Пользователю UserWithMinRight запрещется производить операции вставки, удаления и обновления в таблице User, а так же разрешения, запрещенные пользователю UserWithMinRight , будут также запрещены пользователям, которым он их предоставил*/
 
 USE EmDb
-DENY INSERT ON [User] TO UserWithMinRight CASCADE
-DENY UPDATE ON [User] TO UserWithMinRight CASCADE
-DENY DELETE ON [User] TO UserWithMinRight CASCADE
+DENY INSERT ON [Users] TO UserWithMinRight CASCADE
+DENY UPDATE ON [Users] TO UserWithMinRight CASCADE
+DENY DELETE ON [Users] TO UserWithMinRight CASCADE
 
 /*Пользователю GuestWithMaxRight предоставлены права на разрешение извлекать данные из таблицы или представления, а так же выполнять хранимые процедуры*/
 
@@ -44,5 +44,5 @@ TO GuestWithMaxRight
 /*Пользователю GuestWithMinRight запрещается извлекать из таблицы User поле Password, так же запрещается выполнять хранимые процедуры*/
 
 USE EmDb
-DENY SELECT ON [User](Password) TO GuestWithMinRight
+DENY SELECT ON [Users](Password) TO GuestWithMinRight
 DENY EXECUTE TO GuestWithMinRight
